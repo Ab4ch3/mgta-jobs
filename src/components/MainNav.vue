@@ -10,15 +10,29 @@
             </li>
           </ul>
         </nav>
+        <div class="flex items-center h-full ml-auto py-2.5">
+          <profileImage v-if="isLoggedIn" />
+          <ActionButton v-else @click="loginUser" />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
+import ActionButton from '@/components/ActionButton.vue';
+import profileImage from '@/components/ProfileImage.vue';
+import { ref } from 'vue';
+
 let companyName = 'Mgta Jobs';
 let url = 'https://www.google.com/about/careers/applications/';
 let menuItems = ['Teams', 'Locations', 'Life at mgta Job', 'How we hire', 'Students', 'Jobs'];
+let isLoggedIn = ref(false);
+
+// ### METHODS
+const loginUser = () => {
+  isLoggedIn.value = true;
+};
 </script>
 
 <style scoped></style>
