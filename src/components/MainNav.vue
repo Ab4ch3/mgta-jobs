@@ -11,17 +11,19 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto py-2.5">
-          <profileImage v-if="isLoggedIn" />
+          <ProfileImage v-if="isLoggedIn" />
           <ActionButton v-else text="Sign In" type="primary" @click="loginUser" />
         </div>
       </div>
+      <Subnav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script setup>
 import ActionButton from '@/components/ActionButton.vue';
-import profileImage from '@/components/ProfileImage.vue';
+import ProfileImage from '@/components/ProfileImage.vue';
+import Subnav from '@/components/SubNav.vue';
 import { ref } from 'vue';
 
 let companyName = 'Mgta Jobs';
