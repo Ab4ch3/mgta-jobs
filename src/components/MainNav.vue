@@ -12,7 +12,7 @@
         </nav>
         <div class="flex items-center h-full ml-auto py-2.5">
           <profileImage v-if="isLoggedIn" />
-          <ActionButton v-else @click="loginUser" />
+          <ActionButton v-else text="Sign In" type="primary" @click="loginUser" />
         </div>
       </div>
     </div>
