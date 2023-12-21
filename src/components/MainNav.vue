@@ -1,5 +1,6 @@
 <template>
-  <header class="w-full text-sm">
+  <!-- Es la manera de representar computed property en clases -->
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-brand-gray-1">
         <a :href="url" class="flex items-center h-full text-xl">{{ companyName }}</a>
@@ -24,7 +25,7 @@
 import ActionButton from '@/components/ActionButton.vue';
 import ProfileImage from '@/components/ProfileImage.vue';
 import Subnav from '@/components/SubNav.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 let companyName = 'Mgta Jobs';
 let url = 'https://www.google.com/about/careers/applications/';
@@ -35,6 +36,14 @@ let isLoggedIn = ref(false);
 const loginUser = () => {
   isLoggedIn.value = true;
 };
+
+// ## COMPUTED PROPERTY
+const headerHeightClass = computed(() => {
+  return {
+    'h-16': !isLoggedIn.value,
+    'h-32': isLoggedIn.value
+  };
+});
 </script>
 
 <style scoped></style>
