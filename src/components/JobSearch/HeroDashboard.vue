@@ -7,7 +7,9 @@
           <HeadLine />
           <JobSearch />
         </div>
-        <div class="grid-start-2 col-span-5"></div>
+        <div class="grid-start-2 col-span-5 self-center justify-self-center">
+          <img class="w-80 h-80 object-contain" src="@/assets/img/profile.jpeg" alt="" srcset="" />
+        </div>
         <div class="grid-start-11 col-span-1"></div>
       </div>
     </section>
@@ -15,8 +17,8 @@
 </template>
 
 <script setup>
-import HeadLine from '@/components/HeadLine.vue';
-import JobSearch from '@/components/JobSearchForm.vue';
+import HeadLine from '@/components/JobSearch/HeadLine.vue';
+import JobSearch from '@/components/JobSearch/JobSearchForm.vue';
 </script>
 
 <style scoped></style>

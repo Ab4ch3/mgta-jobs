@@ -22,9 +22,9 @@
 </template>
 
 <script setup>
-import ActionButton from '@/components/ActionButton.vue';
-import ProfileImage from '@/components/ProfileImage.vue';
-import Subnav from '@/components/SubNav.vue';
+import ActionButton from '@/components/Shared/ActionButton.vue';
+import ProfileImage from '@/components/Navigation/ProfileImage.vue';
+import Subnav from '@/components/Navigation/SubNav.vue';
 import { computed, ref } from 'vue';
 
 let companyName = 'Mgta Jobs';
