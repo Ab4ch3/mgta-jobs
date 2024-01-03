@@ -7,12 +7,7 @@
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label for="role" class="absolute left-0 -top-10">Role</label>
-        <input
-          v-model="role"
-          type="text"
-          placeholder="Software Enginner"
-          class="w-full text-lg font-normal focus:outline-none"
-        />
+        <TextInput placeholder="Software Enginner" :value="role" @handle-input="updateRole" />
       </div>
 
       <span class="flex items-center h-full px-3 border-l border-brand-gray-3 bg-brand-gray-2"
@@ -21,12 +16,7 @@
 
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label for="role" class="absolute left-0 -top-10">Where?</label>
-        <input
-          v-model="location"
-          type="text"
-          placeholder="Los Angeles"
-          class="w-full text-lg font-normal focus:outline-none"
-        />
+        <TextInput placeholder="Los Angeles" :value="location" @handle-input="updateLocation" />
       </div>
     </div>
     <ActionButton text="Search" type="secondary" class="rounded-r-3xl" />
@@ -35,10 +25,19 @@
 
 <script setup>
 import ActionButton from '@/components/Shared/ActionButton.vue';
+import TextInput from '@/components/Shared/TextInput.vue';
+
 import { ref } from 'vue';
 
 let role = ref('');
 let location = ref('');
+
+const updateRole = (payload) => {
+  role.value = payload;
+};
+const updateLocation = (payload) => {
+  location.value = payload;
+};
 </script>
 
 <style scoped></style>
