@@ -1,12 +1,12 @@
 <template>
   <div>
     <MainNav />
-    <Hero />
+    <!-- //Este componente local nos permite usar las rutas -->
+    <RouterView />
   </div>
 </template>
 <script setup>
 import MainNav from '@/components/Navigation/MainNav.vue';
-import Hero from '@/components/JobSearch/HeroDashboard.vue';
 </script>
 
 <style scoped></style>
