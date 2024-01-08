@@ -6,8 +6,10 @@
         <RouterLink to="/" class="flex items-center h-full text-xl"> Mgta Jobs </RouterLink>
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
-            <li v-for="menuItem in menuItems" :key="menuItem" class="h-full ml-9 first:ml-0">
-              <a href="#" class="flex items-center h-full py-2.5">{{ menuItem }}</a>
+            <li v-for="Item in menuItems" :key="Item" class="h-full ml-9 first:ml-0">
+              <RouterLink :to="Item.url" class="flex items-center h-full py-2.5">{{
+                Item.text
+              }}</RouterLink>
             </li>
           </ul>
         </nav>
@@ -26,8 +28,16 @@ import ActionButton from '@/components/Shared/ActionButton.vue';
 import ProfileImage from '@/components/Navigation/ProfileImage.vue';
 import Subnav from '@/components/Navigation/SubNav.vue';
 import { computed, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
-let menuItems = ['Teams', 'Locations', 'Life at mgta Job', 'How we hire', 'Students', 'Jobs'];
+let menuItems = [
+  { text: 'Teams', url: '/' },
+  { text: 'Locations', url: '/' },
+  { text: 'Life at mgta job', url: '/' },
+  { text: 'How we hire', url: '/' },
+  { text: 'Students', url: '/' },
+  { text: 'Jobs', url: '/jobs/results' }
+];
 let isLoggedIn = ref(false);
 
 // ### METHODS

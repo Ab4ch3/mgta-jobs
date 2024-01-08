@@ -1,6 +1,7 @@
 <template>
   <form
     class="flex items-center w-full h-12 mt-14 border border-solid border-brand-gray-3 rounded-3xl"
+    @submit.prevent="SearchForJob"
   >
     <FontAwesomeIcon :icon="['fas', 'search']" class="ml-4 mr-3" />
 
@@ -28,7 +29,9 @@ import ActionButton from '@/components/Shared/ActionButton.vue';
 import TextInput from '@/components/Shared/TextInput.vue';
 
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 let role = ref('');
 let location = ref('');
 
@@ -37,6 +40,16 @@ const updateRole = (payload) => {
 };
 const updateLocation = (payload) => {
   location.value = payload;
+};
+
+const SearchForJob = () => {
+  router.push({
+    name: 'JobResults',
+    query: {
+      role: role.value,
+      location: location.value
+    }
+  });
 };
 </script>
 
