@@ -1,19 +1,23 @@
 <template>
   <li class="mb-7">
     <RouterLink
-      to="/job/results/1"
+      :to="jobPageLink"
       class="block mx-auto bg-white broder border-solid border-brand-gray-2 rounded hover:shadow-gray"
     >
       <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
-        <h2 class="mb-2 text-2xl">Technical Program Manager, Perception, Augmented Reality</h2>
+        <h2 class="mb-2 text-2xl">{{ props.job.title }}</h2>
 
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>mgta</span>
+            <span>{{ props.job.organization }}</span>
           </div>
 
           <div class="">
-            <span>San Francisco, CA, USA</span>
+            <ul>
+              <li v-for="location in props.job.locations" :key="location" class="inline-block mr-5">
+                {{ location }}
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -22,14 +26,14 @@
             <h3 class="mt-1 mb-2">Qualification:</h3>
             <div>
               <ul class="pl-8 list-disc">
-                <li>Bachelor's degree or equivalent practice experiences</li>
-                <li>+5 years of experiences in program management</li>
-                <li>Experiences analyzing data through querying database</li>
+                <li v-for="qualification in props.job.minimumQualifications" :key="qualification">
+                  {{ qualification }}
+                </li>
               </ul>
             </div>
           </div>
           <div class="mt-2 text-center">
-            <RouterLink to="/job/results/1" class="text-brand-blue-1">Expand</RouterLink>
+            <RouterLink :to="jobPageLink" class="text-brand-blue-1">Expand</RouterLink>
           </div>
         </div>
       </div>
@@ -37,6 +41,19 @@
   </li>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  job: {
+    type: Object,
+    required: true
+  }
+});
+
+const jobPageLink = computed(() => {
+  return `jobs/results/${props.job.id}`;
+});
+</script>
 
 <style scoped></style>
