@@ -23,7 +23,12 @@ const router = createRouter({
       // Asi usamos la funcion lazy load.
       component: () => import('../views/JobView.vue')
     }
-  ]
+  ],
+  // Esta funcion nos permite hacer cosas en cada cambio de ruta
+  //En este caso nos lleva a la parte de arriba de nuestra pagina
+  scrollBehavior() {
+    return { top: 0, left: 0, behavior: 'smooth' };
+  }
 });
 
 export default router;
