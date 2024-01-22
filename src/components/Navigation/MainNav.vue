@@ -29,6 +29,7 @@ import ProfileImage from '@/components/Navigation/ProfileImage.vue';
 import Subnav from '@/components/Navigation/SubNav.vue';
 import { computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore.js';
 
 let menuItems = [
   { text: 'Teams', url: '/' },
@@ -38,11 +39,13 @@ let menuItems = [
   { text: 'Students', url: '/' },
   { text: 'Jobs', url: '/jobs/results' }
 ];
+const store = useAuthStore();
 let isLoggedIn = ref(false);
 
 // ### METHODS
 const loginUser = () => {
-  isLoggedIn.value = true;
+  store.LOGIN_USER();
+  return (isLoggedIn.value = store.isLoggedIn);
 };
 
 // ## COMPUTED PROPERTY
