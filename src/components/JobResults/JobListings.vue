@@ -27,13 +27,18 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+// import axios from 'axios';
 import JobListing from '@/components/JobResults/JobListing.vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useJobStore } from '@/stores/jobStore.js';
 
+const store = useJobStore();
 const route = useRoute();
-let jobs = ref([]);
+
+const jobslist = computed(() => {
+  return store.jobs;
+});
 
 const currentPage = computed(() => {
   const pageString = route.query.page || '1';
@@ -48,7 +53,7 @@ const previousPages = computed(() => {
 
 const nextPage = computed(() => {
   const nextPage = currentPage.value + 1;
-  const maxPage = Math.ceil(jobs.value.length / 10);
+  const maxPage = Math.ceil(jobslist.value.length / 10);
   return nextPage <= maxPage ? nextPage : undefined;
 });
 
@@ -56,15 +61,10 @@ const displayJobs = computed(() => {
   let pageNumber = currentPage.value;
   const firstJobIndex = (pageNumber - 1) * 10;
   const lastJobIndex = pageNumber * 10;
-  return jobs.value.slice(firstJobIndex, lastJobIndex);
+  return jobslist.value.slice(firstJobIndex, lastJobIndex);
 });
 
-onMounted(async () => {
-  const baseURL = import.meta.env.VITE_APP_API_URL;
-  let response = await axios.get(`${baseURL}/jobs`);
-  console.log(baseURL);
-  jobs.value = response.data;
-});
+store.getJobs();
 </script>
 
 <style scoped></style>
