@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import JobFilter from '@/components/JobResults/JobFilterSidebar/JobFilterSidebard.vue';
+import JobFilter from '@/components/JobResults/JobFilterSidebar/JobFilterSidebar.vue';
 import JobListings from '@/components/JobResults/JobListings.vue';
 </script>
 
