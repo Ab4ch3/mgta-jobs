@@ -9,19 +9,24 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: () => import('../views/HomeView.vue')
+      component: () => import('@/views/HomeView.vue')
+    },
+    {
+      path: '/teams',
+      name: 'Teams',
+      component: () => import('@/views/TeamView.vue')
     },
     {
       path: '/jobs/results',
       name: 'JobResults',
-      component: () => import('../views/JobResultView.vue')
+      component: () => import('@/views/JobResultView.vue')
     },
     // Asi especificamos que es una ruta q recibe un parametro
     {
       path: '/jobs/results/:id',
       name: 'JobListing',
       // Asi usamos la funcion lazy load.
-      component: () => import('../views/JobView.vue')
+      component: () => import('@/views/JobView.vue')
     }
   ],
   // Esta funcion nos permite hacer cosas en cada cambio de ruta

@@ -32,7 +32,7 @@ import { RouterLink } from 'vue-router';
 import { useAuthStore } from '@/stores/authStore.js';
 
 let menuItems = [
-  { text: 'Teams', url: '/' },
+  { text: 'Teams', url: '/teams' },
   { text: 'Locations', url: '/' },
   { text: 'Life at mgta job', url: '/' },
   { text: 'How we hire', url: '/' },
