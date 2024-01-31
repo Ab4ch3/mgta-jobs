@@ -27,7 +27,6 @@
 </template>
 
 <script setup>
-// import axios from 'axios';
 import JobListing from '@/components/JobResults/JobListing.vue';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
