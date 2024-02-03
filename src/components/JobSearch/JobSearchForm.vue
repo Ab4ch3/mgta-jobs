@@ -7,7 +7,7 @@
 
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
-        <label for="role" class="absolute left-0 -top-10">Role</label>
+        <label for="role" class="absolute left-0 -top-10 font-medium">Role</label>
         <TextInput placeholder="Software Enginner" :value="role" @handle-input="updateRole" />
       </div>
 

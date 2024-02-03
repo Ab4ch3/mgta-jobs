@@ -3,17 +3,15 @@
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
-          <li class="w-1/2 h-8">
-            <input id="Vuetube" type="checkbox" class="mr-3" />
-            <label for="Vuetube">Vuetube</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input id="Vuetube1" type="checkbox" class="mr-3" />
-            <label for="Vuetube1">Vuetube1</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input id="Vuetube2" type="checkbox" class="mr-3" />
-            <label for="Vuetube2">Vuetube2</label>
+          <li v-for="org in store.uniqueOrganizations" :key="org" class="w-1/2 h-8">
+            <input
+              :id="org"
+              v-model="selectedOrganizations"
+              :value="org"
+              type="checkbox"
+              class="mr-3"
+            />
+            <label :for="org">{{ org }}</label>
           </li>
         </ul>
       </fieldset>
@@ -22,7 +20,12 @@
 </template>
 
 <script setup>
+import { useJobStore } from '@/stores/jobStore.js';
 import Accordion from '@/components/Shared/AccordionComponent.vue';
+import { ref } from 'vue';
+
+const store = useJobStore();
+let selectedOrganizations = ref([]);
 </script>
 
 <style lang="scss" scoped></style>
