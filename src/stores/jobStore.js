@@ -15,12 +15,23 @@ export const useJobStore = defineStore('jobs', {
         uniqueOrg.add(job.organization);
       });
       return uniqueOrg;
+    },
+    jobsFilteredByOrganization: (state) => {
+      if (state.selectedOrganizations.length === 0) {
+        return state.jobs;
+      } else {
+        return state.jobs.filter((job) => state.selectedOrganizations.includes(job.organization));
+      }
     }
   },
   actions: {
     async getJobs() {
       let response = await axios.get(`${baseURL}/jobs`);
       return (this.jobs = response.data);
+    },
+
+    addOrganization(organizations) {
+      this.selectedOrganizations = organizations;
     }
   }
 });

@@ -6,10 +6,11 @@
           <li v-for="org in store.uniqueOrganizations" :key="org" class="w-1/2 h-8">
             <input
               :id="org"
-              v-model="selectedOrganizations"
+              v-model="Organizations"
               :value="org"
               type="checkbox"
               class="mr-3"
+              @change="selectedOrganizations"
             />
             <label :for="org">{{ org }}</label>
           </li>
@@ -25,7 +26,11 @@ import Accordion from '@/components/Shared/AccordionComponent.vue';
 import { ref } from 'vue';
 
 const store = useJobStore();
-let selectedOrganizations = ref([]);
+let Organizations = ref([]);
+
+const selectedOrganizations = () => {
+  store.addOrganization(Organizations.value);
+};
 </script>
 
 <style lang="scss" scoped></style>
