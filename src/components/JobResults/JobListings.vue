@@ -36,7 +36,7 @@ const store = useJobStore();
 const route = useRoute();
 
 const jobslist = computed(() => {
-  return store.jobsFilteredByOrganization;
+  return store.filteredJobs;
 });
 
 const currentPage = computed(() => {

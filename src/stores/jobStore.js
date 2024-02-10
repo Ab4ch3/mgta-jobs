@@ -42,13 +42,15 @@ export const useJobStore = defineStore('jobs', {
       let noSelectOrg = state.selectedOrganizations.length === 0;
       let noSelectJobsType = state.selectedJobsTypes.length === 0;
 
-      if (noSelectOrg && noSelectJobsType) {
-        return state.jobs;
-      }
-
       return state.jobs
-        .filter((job) => state.selectedOrganizations.includes(job.organization))
-        .filter((job) => state.selectedJobsTypes.includes(job.jobType));
+        .filter((job) => {
+          if (noSelectOrg) return true;
+          return state.selectedOrganizations.includes(job.organization);
+        })
+        .filter((job) => {
+          if (noSelectJobsType) return true;
+          return state.selectedJobsTypes.includes(job.jobType);
+        });
     }
   },
   actions: {
