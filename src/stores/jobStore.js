@@ -38,6 +38,7 @@ export const useJobStore = defineStore('jobs', {
         return state.jobs.filter((job) => state.selectedJobsTypes.includes(job.jobType));
       }
     },
+
     filteredJobs: (state) => {
       let noSelectOrg = state.selectedOrganizations.length === 0;
       let noSelectJobsType = state.selectedJobsTypes.length === 0;

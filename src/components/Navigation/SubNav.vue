@@ -19,7 +19,7 @@ const store = useJobStore();
 const route = useRoute();
 
 const availableJobs = computed(() => {
-  return store.jobsFilteredByOrganization.length;
+  return store.filteredJobs.length;
 });
 
 const onJobsResultsPage = computed(() => {

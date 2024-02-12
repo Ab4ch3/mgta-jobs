@@ -24,12 +24,15 @@
 import { useJobStore } from '@/stores/jobStore.js';
 import Accordion from '@/components/Shared/AccordionComponent.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const store = useJobStore();
 let jobsType = ref([]);
 
 const selectedJobs = () => {
   store.addJobsTypes(jobsType.value);
+  router.push({ name: 'JobResults' });
 };
 </script>
 
