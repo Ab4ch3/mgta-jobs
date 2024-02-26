@@ -13,18 +13,16 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
 import { useJobStore } from '@/stores/jobStore.js';
+import useConfirmRoute from '@/composables/useConfirmRoute';
+
 const store = useJobStore();
-const route = useRoute();
 
 const availableJobs = computed(() => {
   return store.filteredJobs.length;
 });
 
-const onJobsResultsPage = computed(() => {
-  return route.name === 'JobResults';
-});
+const onJobsResultsPage = useConfirmRoute('JobResults');
 </script>
 
 <style scoped></style>
